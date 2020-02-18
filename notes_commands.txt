@@ -1,0 +1,11 @@
+*** Notes for command-based programming ***
+
+** Main.java and Robot.java should not be touched! They should work as configured **
+
+** RobotContainer.java ** 
+
+** Subsystems **
+Sets up all of the components of the system and creates a wrapper around them to interact with them.
+
+** Constants **
+Try not to have any "magic" numbers in main functions!
