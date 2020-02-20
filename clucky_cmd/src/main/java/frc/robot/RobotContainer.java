@@ -9,7 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.TankDrive;
-import frc.robot.commands.Autonomous;
+// import frc.robot.commands.Autonomous;
 import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -27,8 +27,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveSubsystem robotdrive = new DriveSubsystem();
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final CommandBase m_autonomousCommand =
-      new Autonomous(robotdrive);
+  private final CommandBase m_autonomousCommand = null;
 
   // The driver's controller
   Joystick driverController = new Joystick(JoystickConstants.kDriverControllerPort);
@@ -43,9 +42,11 @@ public class RobotContainer {
 
     // Set default drive command to tank drive
     robotdrive.setDefaultCommand(
-      new TankDrive(() -> driverController.getRawAxis(JoystickConstants.kDriverLeftStickAxis)/JoystickConstants.kDriverScaleFactor, () -> -driverController.getRawAxis(JoystickConstants.kDriverRightStickAxis)/JoystickConstants.kDriverScaleFactor, robotdrive)
+      new TankDrive(
+        () -> driverController.getRawAxis(JoystickConstants.kDriverLeftStickAxis)/JoystickConstants.kDriverScaleFactor, 
+        () -> driverController.getRawAxis(JoystickConstants.kDriverRightStickAxis)/JoystickConstants.kDriverScaleFactor,
+        robotdrive)
     );
-
   }
 
   /**

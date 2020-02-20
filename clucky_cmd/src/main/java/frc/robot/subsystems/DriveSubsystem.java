@@ -25,14 +25,6 @@ public class DriveSubsystem extends SubsystemBase {
   private final VictorSPX rightmotor2 = new VictorSPX(DriveConstants.kRightMotor2Port);
 
   public DriveSubsystem() {
-
-  }
-
-  /**
-   * Initializes and stops the drive train.
-   * 
-   */
-  public void initMotors() {
     leftmotor1.configFactoryDefault();
     leftmotor1.set(ControlMode.PercentOutput, 0);
     leftmotor2.configFactoryDefault();
@@ -52,8 +44,8 @@ public class DriveSubsystem extends SubsystemBase {
   public void tankDrive(double leftspeed, double rightspeed) {
     leftmotor1.set(ControlMode.PercentOutput, leftspeed);
     leftmotor2.set(ControlMode.PercentOutput, leftspeed);
-    rightmotor1.set(ControlMode.PercentOutput, rightspeed);
-    rightmotor2.set(ControlMode.PercentOutput, rightspeed);
+    rightmotor1.set(ControlMode.PercentOutput, -rightspeed);
+    rightmotor2.set(ControlMode.PercentOutput, -rightspeed);
   }
 
   @Override
