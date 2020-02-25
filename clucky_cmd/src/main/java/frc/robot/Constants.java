@@ -38,7 +38,7 @@ public final class Constants {
 
         public static final int kDriverLeftStickAxis = 3;
         public static final int kDriverRightStickAxis = 1;
-        public static final int kDriverScaleFactor = 3;
+        public static final int kDriverScaleFactor = 3/2;
     }
     public static final class SensorConstants {
 

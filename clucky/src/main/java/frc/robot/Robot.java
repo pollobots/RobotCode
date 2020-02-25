@@ -143,20 +143,39 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
       leftspeed = -.3;
       rightspeed = .3;
     }
-  
+
+    if(ElapsedTime > 3){
+      // shooterspeed = -.55;
+      shooterspeed = SmartDashboard.getNumber("Set Speed", 0);
+    }
+    if (ElapsedTime > 4){
+        conveyorspeed = -.3;
+    }
+
+    if(ElapsedTime > 8){
+      shooterspeed = 0.0;
+      conveyorspeed = 0.0;
+    }
+    
+    if(ElapsedTime > 10){
+      leftspeed = .3;
+      rightspeed = -.3;
+    }
+   
+    if(ElapsedTime > 13){
+      leftspeed = 0;
+      rightspeed = 0;
+    }
+
+    conveyor1.set(conveyorspeed);
+    // shootermotor.set(shooterspeed);
+    m_pidController.setReference(shooterspeed, ControlType.kVelocity);
+
     leftmotor1.set(ControlMode.PercentOutput, leftspeed);
     leftmotor2.set(ControlMode.PercentOutput, leftspeed);
     rightmotor1.set(ControlMode.PercentOutput, rightspeed);
     rightmotor2.set(ControlMode.PercentOutput, rightspeed);
-
-    if(ElapsedTime > 3){
-      shooterspeed = -.9;
-    }
-    shootermotor.set(shooterspeed);
-    if (ElapsedTime > 4){
-        conveyorspeed = -.3;
-    }
-    conveyor1.set(conveyorspeed);
+    
   }
     
 
@@ -178,8 +197,8 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
  
   @Override
   public void teleopPeriodic() {
-    double leftspeed = controller1.getRawAxis(3)/3;
-    double rightspeed = -controller1.getRawAxis(1)/3;
+    double leftspeed = controller1.getRawAxis(3)/3*2;
+    double rightspeed = -controller1.getRawAxis(1)/3*2;
 
     double intakespeed = .0;
     double conveyorspeed = .0;
@@ -218,7 +237,7 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
     rightmotor2.set(ControlMode.PercentOutput, rightspeed);
 
     if(button_lb){
-      conveyorspeed = .40;
+      conveyorspeed = .70;
     }
 
     if(button_rb){
