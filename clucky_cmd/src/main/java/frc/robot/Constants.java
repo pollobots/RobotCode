@@ -24,7 +24,16 @@ public final class Constants {
         public static final int kRightMotor2Port = 3;
     }
     public static final class ShooterConstants {
-
+        public static final int kShooterMotorPort = 4;
+        public static final int kShooterFollowerPort = 5;
+        public static final double kP = 6e-5; 
+        public static final double kI = 0;
+        public static final double kD = 0; 
+        public static final double kIz = 0; 
+        public static final double kFF = 0.000175; 
+        public static final double kMaxOutput = -3000; 
+        public static final double maxRPM = 5700;
+        public static final double wall_distance = 0;
     }
     public static final class ConveyorConstants {
 
