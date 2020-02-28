@@ -30,6 +30,7 @@ public class ShooterSubsystem extends SubsystemBase {
   private CANPIDController m_pidController;  
 
   public ShooterSubsystem() {
+    shooterfollower.follow(shootermotor,true); 
     m_encoder = shootermotor.getEncoder();
     m2_encoder = shooterfollower.getEncoder();
     m_pidController = shootermotor.getPIDController();
@@ -46,8 +47,29 @@ public class ShooterSubsystem extends SubsystemBase {
    * Spins up shooter
    */
   public void shoot() {
-    m_pidController.setReference(-3000, ControlType.kVelocity);
+    m_pidController.setReference(ShooterConstants.shootRPM, ControlType.kVelocity);
+  
   }
+
+  /**
+   * Stops shooter
+   */
+  public void stop() {
+    m_pidController.setReference(0, ControlType.kVelocity);
+  
+  }
+  /**
+   * Reterns whether the shouter is right
+   */
+  public boolean ready() {
+    double m_encoder_RPM = m_encoder.getVelocity();
+    double m2_encoder_RPM  = m2_encoder.getVelocity();
+    double average_RPM = (m_encoder_RPM + m2_encoder_RPM)/2;
+    double error = Math.abs(ShooterConstants.shootRPM - average_RPM);
+    boolean isready = error < ShooterConstants.shooterthreshold;
+    return isready;
+  }
+
 
   @Override
   public void periodic() {
