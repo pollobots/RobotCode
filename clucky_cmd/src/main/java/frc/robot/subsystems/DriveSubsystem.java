@@ -18,21 +18,21 @@ public class DriveSubsystem extends SubsystemBase {
    * Drive subsystem of robot. Differential drive with two motors driving each side.
    */
   // The motors on the left side of the drive
-  private final VictorSPX leftmotor1 = new VictorSPX(DriveConstants.kLeftMotor1Port);
-  private final VictorSPX leftmotor2 = new VictorSPX(DriveConstants.kLeftMotor2Port);
+  private final VictorSPX m_leftMotor1 = new VictorSPX(DriveConstants.kLeftMotor1Port);
+  private final VictorSPX m_leftMotor2 = new VictorSPX(DriveConstants.kLeftMotor2Port);
   // The motors on the right side of the drive
-  private final VictorSPX rightmotor1 = new VictorSPX(DriveConstants.kRightMotor1Port);
-  private final VictorSPX rightmotor2 = new VictorSPX(DriveConstants.kRightMotor2Port);
+  private final VictorSPX m_rightMotor1 = new VictorSPX(DriveConstants.kRightMotor1Port);
+  private final VictorSPX m_rightMotor2 = new VictorSPX(DriveConstants.kRightMotor2Port);
 
   public DriveSubsystem() {
-    leftmotor1.configFactoryDefault();
-    leftmotor1.set(ControlMode.PercentOutput, 0);
-    leftmotor2.configFactoryDefault();
-    leftmotor2.set(ControlMode.PercentOutput, 0);
-    rightmotor1.configFactoryDefault();
-    rightmotor1.set(ControlMode.PercentOutput, 0);
-    rightmotor2.configFactoryDefault();
-    rightmotor2.set(ControlMode.PercentOutput, 0);
+    m_leftMotor1.configFactoryDefault();
+    m_leftMotor1.set(ControlMode.PercentOutput, 0);
+    m_leftMotor2.configFactoryDefault();
+    m_leftMotor2.set(ControlMode.PercentOutput, 0);
+    m_rightMotor1.configFactoryDefault();
+    m_rightMotor1.set(ControlMode.PercentOutput, 0);
+    m_rightMotor2.configFactoryDefault();
+    m_rightMotor2.set(ControlMode.PercentOutput, 0);
   }
 
   /**
@@ -42,14 +42,9 @@ public class DriveSubsystem extends SubsystemBase {
    * @param rightspeed speed for right side
    */
   public void tankDrive(double leftspeed, double rightspeed) {
-    leftmotor1.set(ControlMode.PercentOutput, leftspeed);
-    leftmotor2.set(ControlMode.PercentOutput, leftspeed);
-    rightmotor1.set(ControlMode.PercentOutput, -rightspeed);
-    rightmotor2.set(ControlMode.PercentOutput, -rightspeed);
-  }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+    m_leftMotor1.set(ControlMode.PercentOutput, leftspeed);
+    m_leftMotor2.set(ControlMode.PercentOutput, leftspeed);
+    m_rightMotor1.set(ControlMode.PercentOutput, -rightspeed);
+    m_rightMotor2.set(ControlMode.PercentOutput, -rightspeed);
   }
 }

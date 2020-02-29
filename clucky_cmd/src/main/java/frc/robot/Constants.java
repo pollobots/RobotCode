@@ -32,10 +32,10 @@ public final class Constants {
         public static final double kIz = 0; 
         public static final double kFF = 0.000175; 
         public static final double kMaxOutput = -3000; 
-        public static final double maxRPM = 5700;
-        public static final double wall_distance = 0;
-        public static final double shootRPM = -3000;
-        public static final double shooterthreshold = 300;
+        public static final double kMaxRPM = 5700;
+        public static final double kWallDistance = 0;
+        public static final double kShootRPM = -3000;
+        public static final double kShooterthreshold = 300;
     }
     public static final class ConveyorConstants {
 

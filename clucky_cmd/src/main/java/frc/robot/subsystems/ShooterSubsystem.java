@@ -21,19 +21,19 @@ public class ShooterSubsystem extends SubsystemBase {
    * Shooter subsystem of robot. Single wheel driven with SparkMAXs on either side.
    */
   // The main shooter motor
-  private final CANSparkMax shootermotor = new CANSparkMax(ShooterConstants.kShooterMotorPort, MotorType.kBrushless);
-  private final CANEncoder m_encoder;
+  private final CANSparkMax m_m_shooterMotor = new CANSparkMax(ShooterConstants.kShooterMotorPort, MotorType.kBrushless);
+  private final CANEncoder m_shooterEncoder;
   // The secondary shooter motor (inverted)
-  private final CANSparkMax shooterfollower = new CANSparkMax(ShooterConstants.kShooterFollowerPort, MotorType.kBrushless);
-  private final CANEncoder m2_encoder;
+  private final CANSparkMax m_shooterFollower = new CANSparkMax(ShooterConstants.kShooterFollowerPort, MotorType.kBrushless);
+  private final CANEncoder m_followerEncoder;
   // PID controller
   private CANPIDController m_pidController;  
 
   public ShooterSubsystem() {
-    shooterfollower.follow(shootermotor,true); 
-    m_encoder = shootermotor.getEncoder();
-    m2_encoder = shooterfollower.getEncoder();
-    m_pidController = shootermotor.getPIDController();
+    m_shooterFollower.follow(m_shooterMotor,true); 
+    m_shooterEncoder = m_shooterMotor.getEncoder();
+    m_followerEncoder = m_shooterFollower.getEncoder();
+    m_pidController = m_shooterMotor.getPIDController();
     // set PID coefficients
     m_pidController.setP(ShooterConstants.kP);
     m_pidController.setI(ShooterConstants.kI);
@@ -47,8 +47,7 @@ public class ShooterSubsystem extends SubsystemBase {
    * Spins up shooter
    */
   public void shoot() {
-    m_pidController.setReference(ShooterConstants.shootRPM, ControlType.kVelocity);
-  
+    m_pidController.setReference(ShooterConstants.kShootRPM, ControlType.kVelocity);
   }
 
   /**
@@ -62,17 +61,11 @@ public class ShooterSubsystem extends SubsystemBase {
    * Reterns whether the shouter is right
    */
   public boolean ready() {
-    double m_encoder_RPM = m_encoder.getVelocity();
-    double m2_encoder_RPM  = m2_encoder.getVelocity();
-    double average_RPM = (m_encoder_RPM + m2_encoder_RPM)/2;
-    double error = Math.abs(ShooterConstants.shootRPM - average_RPM);
-    boolean isready = error < ShooterConstants.shooterthreshold;
-    return isready;
-  }
-
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+    double m_shooterEncoder_RPM = m_shooterEncoder.getVelocity();
+    double m_followerEncoder_RPM  = m_followerEncoder.getVelocity();
+    double average_RPM = (m_shooterEncoder_RPM + m_followerEncoder_RPM)/2;
+    double error = Math.abs(ShooterConstants.kShootRPM - average_RPM);
+    boolean isReady = error < ShooterConstants.kShooterthreshold;
+    return isReady;
   }
 }
