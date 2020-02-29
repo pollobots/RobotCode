@@ -7,14 +7,23 @@
 
 package frc.robot;
 
+// WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+
 import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.commands.TankDrive;
-// import frc.robot.commands.Autonomous;
+
+// TODO: import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
+
+// TODO: import commands here
+// import frc.robot.commands.Autonomous;
+import frc.robot.commands.TankDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+
+// TODO: import constants here
 import frc.robot.Constants.JoystickConstants;
 
+// ^^-----------------------------------------------------------------------------------^^ //
 
 
 /**
@@ -26,15 +35,28 @@ import frc.robot.Constants.JoystickConstants;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveSubsystem robotdrive = new DriveSubsystem();
+
+  // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+  // TODO: Instantiate the remaining subsystems:
+  //  - ShooterSubsystem
+  //  - ConveyorSubsystem
+  //  - IntakeSubsystem
+  //  - HangerSubsystem
+
+  // ^^-----------------------------------------------------------------------------------^^ //
+
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final CommandBase m_autonomousCommand = null;
 
   // The driver's controller
   Joystick driverController = new Joystick(JoystickConstants.kDriverControllerPort);
+  // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+  // TODO: instantiate operator controller here
 
+  // ^^-----------------------------------------------------------------------------------^^ //
 
   /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
+   * The container for the robot.  Contains subsystems, devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
@@ -56,6 +78,12 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+    // TODO: connect joystick buttons to commands here
+
+    // ^^-----------------------------------------------------------------------------------^^ //
+
+
   }
 
 

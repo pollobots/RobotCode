@@ -24,8 +24,10 @@ public final class Constants {
         public static final int kRightMotor2Port = 3;
     }
     public static final class ShooterConstants {
+        // main shooter motors (SparkMAX)
         public static final int kShooterMotorPort = 4;
         public static final int kShooterFollowerPort = 5;
+        // shooter PID controller constants
         public static final double kP = 6e-5; 
         public static final double kI = 0;
         public static final double kD = 0; 
@@ -34,6 +36,7 @@ public final class Constants {
         public static final double kMaxOutput = -3000; 
         public static final double kMaxRPM = 5700;
         public static final double kWallDistance = 0;
+        // shooter speeds
         public static final double kShootRPM = -3000;
         public static final double kShooterthreshold = 300;
     }
@@ -43,16 +46,18 @@ public final class Constants {
     public static final class IntakeConstants {
 
     }
+    public static final class HangerConstants {
+
+    }
     public static final class JoystickConstants {
+        // controller ports
         public static final int kDriverControllerPort = 0;
         public static final int kOperatorControllerPort = 1;
-
+        // driver controller axes and buttons
         public static final int kDriverLeftStickAxis = 3;
         public static final int kDriverRightStickAxis = 1;
         public static final int kDriverScaleFactor = 3/2; // amount to DIVIDE joystick value by
                                                             // the larger the factor, the slower the robot
-    }
-    public static final class SensorConstants {
-
+        // operator controller axes and buttons
     }
 }

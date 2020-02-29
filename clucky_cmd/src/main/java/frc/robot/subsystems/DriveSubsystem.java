@@ -24,6 +24,11 @@ public class DriveSubsystem extends SubsystemBase {
   private final VictorSPX m_rightMotor1 = new VictorSPX(DriveConstants.kRightMotor1Port);
   private final VictorSPX m_rightMotor2 = new VictorSPX(DriveConstants.kRightMotor2Port);
 
+  // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+  // TODO: instantiate a flag for precise mode
+
+  // ^^-----------------------------------------------------------------------------------^^ //
+  
   public DriveSubsystem() {
     m_leftMotor1.configFactoryDefault();
     m_leftMotor1.set(ControlMode.PercentOutput, 0);
@@ -42,9 +47,24 @@ public class DriveSubsystem extends SubsystemBase {
    * @param rightspeed speed for right side
    */
   public void tankDrive(double leftspeed, double rightspeed) {
+    // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+    // TODO: modify to utilize precise mode scaling
+
     m_leftMotor1.set(ControlMode.PercentOutput, leftspeed);
     m_leftMotor2.set(ControlMode.PercentOutput, leftspeed);
     m_rightMotor1.set(ControlMode.PercentOutput, -rightspeed);
     m_rightMotor2.set(ControlMode.PercentOutput, -rightspeed);
+    // ^^-----------------------------------------------------------------------------------^^ //
   }
+
+  /**
+   * Set precise mode
+   */
+  public void setPreciseMode() {
+    // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+    // TODO: stop the intake motor
+
+    // ^^-----------------------------------------------------------------------------------^^ //
+  }
+
 }

@@ -20,6 +20,7 @@ public class ShooterSubsystem extends SubsystemBase {
   /**
    * Shooter subsystem of robot. Single wheel driven with SparkMAXs on either side.
    */
+  
   // The main shooter motor
   private final CANSparkMax m_shooterMotor = new CANSparkMax(ShooterConstants.kShooterMotorPort, MotorType.kBrushless);
   private final CANEncoder m_shooterEncoder;
@@ -58,7 +59,7 @@ public class ShooterSubsystem extends SubsystemBase {
   
   }
   /**
-   * Reterns whether the shouter is right
+   * Reterns whether the shooter has reached desired speed (boolean)
    */
   public boolean ready() {
     double m_shooterEncoder_RPM = m_shooterEncoder.getVelocity();
