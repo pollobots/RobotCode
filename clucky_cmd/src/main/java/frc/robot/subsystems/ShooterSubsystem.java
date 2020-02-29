@@ -21,7 +21,7 @@ public class ShooterSubsystem extends SubsystemBase {
    * Shooter subsystem of robot. Single wheel driven with SparkMAXs on either side.
    */
   // The main shooter motor
-  private final CANSparkMax m_m_shooterMotor = new CANSparkMax(ShooterConstants.kShooterMotorPort, MotorType.kBrushless);
+  private final CANSparkMax m_shooterMotor = new CANSparkMax(ShooterConstants.kShooterMotorPort, MotorType.kBrushless);
   private final CANEncoder m_shooterEncoder;
   // The secondary shooter motor (inverted)
   private final CANSparkMax m_shooterFollower = new CANSparkMax(ShooterConstants.kShooterFollowerPort, MotorType.kBrushless);
