@@ -60,5 +60,9 @@ public final class Constants {
         public static final int kDriverScaleFactor = 3/2; // amount to DIVIDE joystick value by
                                                             // the larger the factor, the slower the robot
         // operator controller axes and buttons
+        public static final int kOperatorLeftTrigger = 2;
+        public static final int kOperatorRightTrigger = 3;
+        public static final double kTriggerThreshold = 0.5;
+
     }
 }

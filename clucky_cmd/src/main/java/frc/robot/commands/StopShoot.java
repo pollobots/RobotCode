@@ -23,7 +23,7 @@ public class StopShoot extends CommandBase {
 
   // ^^-----------------------------------------------------------------------------------^^ //
 
-  public ShootPowerCell(ShooterSubsystem shooter, ConveyorSubsystem conveyor) {
+  public StopShoot(ShooterSubsystem shooter, ConveyorSubsystem conveyor) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: instantiate the shooter and conveyor here
     

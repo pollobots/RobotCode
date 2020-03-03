@@ -9,11 +9,16 @@ package frc.robot;
 
 // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
 
+// TODO: import joystick utilities here
 import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.util.JoystickAxisButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 // TODO: import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
-
+import frc.robot.commands.IntakePowerCell;
+import frc.robot.commands.ShootPowerCell;
+import frc.robot.commands.StopShoot;
 // TODO: import commands here
 // import frc.robot.commands.Autonomous;
 import frc.robot.commands.TankDrive;
@@ -34,14 +39,14 @@ import frc.robot.Constants.JoystickConstants;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final DriveSubsystem robotdrive = new DriveSubsystem();
+  private final DriveSubsystem m_drive = new DriveSubsystem();
 
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: Instantiate the remaining subsystems:
-  //  - ShooterSubsystem
-  //  - ConveyorSubsystem
-  //  - IntakeSubsystem
-  //  - HangerSubsystem
+  //  - m_shooter
+  //  - m_conveyor
+  //  - m_intake
+  //  - m_hanger
 
   // ^^-----------------------------------------------------------------------------------^^ //
 
@@ -49,11 +54,8 @@ public class RobotContainer {
   private final CommandBase m_autonomousCommand = null;
 
   // The driver's controller
-  Joystick driverController = new Joystick(JoystickConstants.kDriverControllerPort);
-  // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-  // TODO: instantiate operator controller here
-
-  // ^^-----------------------------------------------------------------------------------^^ //
+  Joystick m_driverController = new Joystick(JoystickConstants.kDriverControllerPort);
+  Joystick m_operatorController = new Joystick(JoystickConstants.kOperatorControllerPort);
 
   /**
    * The container for the robot.  Contains subsystems, devices, and commands.
@@ -63,11 +65,11 @@ public class RobotContainer {
     configureButtonBindings();
 
     // Set default drive command to tank drive
-    robotdrive.setDefaultCommand(
+    m_drive.setDefaultCommand(
       new TankDrive(
-        () -> driverController.getRawAxis(JoystickConstants.kDriverLeftStickAxis)/JoystickConstants.kDriverScaleFactor, 
-        () -> driverController.getRawAxis(JoystickConstants.kDriverRightStickAxis)/JoystickConstants.kDriverScaleFactor,
-        robotdrive)
+        () -> m_driverController.getRawAxis(JoystickConstants.kDriverLeftStickAxis)/JoystickConstants.kDriverScaleFactor, 
+        () -> m_driverController.getRawAxis(JoystickConstants.kDriverRightStickAxis)/JoystickConstants.kDriverScaleFactor,
+        m_drive)
     );
   }
 
@@ -78,12 +80,38 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+
+    // operator right trigger for intake
+    final JoystickAxisButton m_operatorLeftTriggerAxisButton = new JoystickAxisButton(m_operatorController, JoystickConstants.kOperatorLeftTrigger, JoystickConstants.kTriggerThreshold);
+    final Trigger m_operatorLeftTrigger = new Trigger(m_operatorLeftTriggerAxisButton::get);
+
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: connect joystick buttons to commands here
+    // TODO: Create JoystickAxisButton and Trigger objects for useful operator triggers
+
+    // TODO: Create JoystickAxisButton and Trigger objects for useful driver triggers
+
+    // TODO: Create JoystickButton objects for useful operator buttons
+
+    // TODO: Create JoystickButton objects for useful driver buttons
 
     // ^^-----------------------------------------------------------------------------------^^ //
 
+    // connect operator left trigger to intake power cell command
+    m_operatorLeftTrigger.whileActiveOnce(new IntakePowerCell(m_intake, m_conveyor));
 
+    // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+    // TODO: connect operator right trigger to shoot when active
+
+    // TODO: connect operator right trigger to stop shooting when inactive
+
+    // ^^-----------------------------------------------------------------------------------^^ //
+
+    m_driverRightTrigger.whenActive(() -> m_drive.setPreciseMode);
+
+    // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+    // TODO: connect driver right trigger to go back to regular drive mode when inactive
+
+    // ^^-----------------------------------------------------------------------------------^^ //
   }
 
 
