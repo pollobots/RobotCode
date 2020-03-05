@@ -52,10 +52,10 @@ public class Robot extends TimedRobot {
    */
 Timer my_timer = new Timer();
 
-VictorSPX leftmotor1 = new VictorSPX(0);
-VictorSPX leftmotor2 = new VictorSPX(1);
-VictorSPX rightmotor1 = new VictorSPX(2);
-VictorSPX rightmotor2 = new VictorSPX(3);
+VictorSPX leftmotor1 = new VictorSPX(2);
+VictorSPX leftmotor2 = new VictorSPX(3);
+VictorSPX rightmotor1 = new VictorSPX(0);
+VictorSPX rightmotor2 = new VictorSPX(1);
 
 CANSparkMax shootermotor = new CANSparkMax(4, MotorType.kBrushless);
 CANSparkMax shooterfollower = new CANSparkMax(5, MotorType.kBrushless);
