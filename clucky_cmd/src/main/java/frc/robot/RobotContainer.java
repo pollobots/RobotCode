@@ -13,15 +13,20 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.util.JoystickAxisButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 // TODO: import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.commands.IntakePowerCell;
-import frc.robot.commands.ShootPowerCell;
-import frc.robot.commands.StopShoot;
+import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.ConveyorSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+
 // TODO: import commands here
 // import frc.robot.commands.Autonomous;
 import frc.robot.commands.TankDrive;
+import frc.robot.commands.IntakePowerCell;
+import frc.robot.commands.ShootPowerCell;
+import frc.robot.commands.StopShoot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -29,7 +34,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.JoystickConstants;
 
 // ^^-----------------------------------------------------------------------------------^^ //
-
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -43,11 +47,10 @@ public class RobotContainer {
 
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: Instantiate the remaining subsystems:
-  //  - m_shooter
-  //  - m_conveyor
-  //  - m_intake
   //  - m_hanger
-
+  private final ShooterSubsystem m_shooter = new ShooterSubsystem();
+  private final ConveyorSubsystem m_conveyor = new ConveyorSubsystem();
+  private final IntakeSubsystem m_intake = new IntakeSubsystem();
   // ^^-----------------------------------------------------------------------------------^^ //
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
@@ -81,19 +84,22 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    // operator right trigger for intake
+    // operator left trigger for intake
     final JoystickAxisButton m_operatorLeftTriggerAxisButton = new JoystickAxisButton(m_operatorController, JoystickConstants.kOperatorLeftTrigger, JoystickConstants.kTriggerThreshold);
     final Trigger m_operatorLeftTrigger = new Trigger(m_operatorLeftTriggerAxisButton::get);
 
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: Create JoystickAxisButton and Trigger objects for useful operator triggers
+    // operator right trigger for shooting
+    final JoystickAxisButton m_operatorRightTriggerAxisButton = new JoystickAxisButton(m_operatorController, JoystickConstants.kOperatorRightTrigger, JoystickConstants.kTriggerThreshold);
+    final Trigger m_operatorRightTrigger = new Trigger(m_operatorRightTriggerAxisButton::get); 
 
     // TODO: Create JoystickAxisButton and Trigger objects for useful driver triggers
-
+    
     // TODO: Create JoystickButton objects for useful operator buttons
 
     // TODO: Create JoystickButton objects for useful driver buttons
-
+    final JoystickButton m_driverRightBumper = new JoystickButton(m_driverController, JoystickConstants.kDriverRightBumper);
     // ^^-----------------------------------------------------------------------------------^^ //
 
     // connect operator left trigger to intake power cell command
@@ -101,16 +107,18 @@ public class RobotContainer {
 
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: connect operator right trigger to shoot when active
+    m_operatorRightTrigger.whenActive(new ShootPowerCell(m_shooter, m_conveyor));
 
     // TODO: connect operator right trigger to stop shooting when inactive
-
+    m_operatorRightTrigger.whenInactive(new StopShoot(m_shooter, m_conveyor));
     // ^^-----------------------------------------------------------------------------------^^ //
+    m_driverRightBumper.whenPressed(() -> m_drive.setPreciseMode());
+    
 
-    m_driverRightTrigger.whenActive(() -> m_drive.setPreciseMode);
 
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: connect driver right trigger to go back to regular drive mode when inactive
-
+    m_driverRightBumper.whenReleased(() -> m_drive.setRegularMode());
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 

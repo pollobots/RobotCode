@@ -9,9 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+
 // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
 // TODO: import required subsystems here!
-
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ConveyorSubsystem;
 // ^^-----------------------------------------------------------------------------------^^ //
 
 /**
@@ -20,15 +22,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class IntakePowerCell extends CommandBase {
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: declare the intake and conveyor subsystems here (m_intake, m_conveyor)
-
+  private final IntakeSubsystem m_intake;
+  private final ConveyorSubsystem m_conveyor;
   // ^^-----------------------------------------------------------------------------------^^ //
 
   public IntakePowerCell(IntakeSubsystem intake, ConveyorSubsystem conveyor) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: instantiate the intake and conveyor here
-    
+    m_intake = intake;
+    m_conveyor = conveyor;
     // TODO: add intake and conveyor as a requirement
-    // addRequirements(m_intake, m_conveyor);
+    addRequirements(m_intake, m_conveyor);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -37,7 +41,8 @@ public class IntakePowerCell extends CommandBase {
   public void initialize() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: set intake to intake power cells, and set conveyor to stop
-
+    m_intake.intake();
+    m_conveyor.stop();
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -48,7 +53,11 @@ public class IntakePowerCell extends CommandBase {
     // TODO: check power cell sensor
     //  if there is a power cell, run conveyor to clear
     //  if not, then turn conveyor off
-
+    if (m_conveyor.hasPowerCell()) {
+      m_conveyor.moveUp();
+    } else {
+      m_conveyor.stop();
+    }
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 }

@@ -8,7 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-
+import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.DriveSubsystem;
 
 /**
@@ -17,7 +17,7 @@ import frc.robot.subsystems.DriveSubsystem;
 public class DriveForward extends WaitCommand {
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: declare the drive train here (m_driveTrain)
-
+  private final DriveSubsystem m_driveTrain;
   // ^^-----------------------------------------------------------------------------------^^ //
   
   /**
@@ -31,9 +31,9 @@ public class DriveForward extends WaitCommand {
     super(seconds);
 
     // TODO: instantiate the driveTrain here
-    
+    m_driveTrain = driveTrain;
     // TODO: add driveTrain as a requirement
-    // addRequirements(m_driveTrain);
+    addRequirements(m_driveTrain);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -42,7 +42,7 @@ public class DriveForward extends WaitCommand {
   public void initialize() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: set driveTrain to drive straight foward
-
+    m_driveTrain.tankDrive(DriveConstants.kDriveForwardSpeed, DriveConstants.kDriveForwardSpeed);
     // ^^-----------------------------------------------------------------------------------^^ //
     super.initialize();
   }
@@ -52,7 +52,7 @@ public class DriveForward extends WaitCommand {
   public void end(boolean interrupted) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: set driveTrain to stop
-
+    m_driveTrain.tankDrive(0,0);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 }

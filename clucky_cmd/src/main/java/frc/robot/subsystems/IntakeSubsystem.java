@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
 // TODO: Import needed packages here!
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Spark;
 
 // ^^-----------------------------------------------------------------------------------^^ //
 
@@ -22,13 +23,14 @@ public class IntakeSubsystem extends SubsystemBase {
 
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: instantiate the intake motor controller here (m_intakeMotor)
+  private final Spark m_intakeMotor = new Spark(IntakeConstants.kIntakeMotorPort);
 
   // ^^-----------------------------------------------------------------------------------^^ //
   
   public IntakeSubsystem() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: configure and initialize motor (if necessary)
-
+    m_intakeMotor.set(0);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -38,7 +40,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public void stop() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: stop the intake motor
-
+    m_intakeMotor.set(0);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -48,7 +50,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public void intake() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: turn on intake motor to intake power cells
-
+    m_intakeMotor.set(IntakeConstants.kIntakeSpeed);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -58,7 +60,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public void eject() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: turn on intake motor to eject power cells
-
+    m_intakeMotor.set(-IntakeConstants.kIntakeSpeed);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 }

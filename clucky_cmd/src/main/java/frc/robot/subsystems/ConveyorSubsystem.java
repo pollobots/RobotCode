@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
 // TODO: Import needed packages here!
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
+import edu.wpi.first.wpilibj.Spark;
 // ^^-----------------------------------------------------------------------------------^^ //
 
 import frc.robot.Constants.ConveyorConstants;
@@ -22,7 +22,7 @@ public class ConveyorSubsystem extends SubsystemBase {
 
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: instantiate the converyor motor controller here (m_conveyorMotor)
-
+  private final Spark m_conveyorMotor = new Spark(ConveyorConstants.kConveyorMotorPort);
   // TODO: instantiate the power cell sensor here (m_powerCellSensor)
   //    Wait until it is actually implemented, for now we don't need it!
 
@@ -31,7 +31,7 @@ public class ConveyorSubsystem extends SubsystemBase {
   public ConveyorSubsystem() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: configure and initialize motor (if necessary)
-
+    m_conveyorMotor.set(0);
     // TODO: configure and initialize power cell sensor (if necessary)
 
     // ^^-----------------------------------------------------------------------------------^^ //
@@ -43,7 +43,7 @@ public class ConveyorSubsystem extends SubsystemBase {
   public void stop() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: stop the conveyor motor
-
+    m_conveyorMotor.set(0);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -53,7 +53,7 @@ public class ConveyorSubsystem extends SubsystemBase {
   public void moveUp() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: turn on conveyor motor to move power cells toward shooter
-
+    m_conveyorMotor.set(ConveyorConstants.kConveyorSpeed);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -63,7 +63,7 @@ public class ConveyorSubsystem extends SubsystemBase {
   public void moveDown() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: turn on conveyor motor to move power cells toward intake
-
+    m_conveyorMotor.set(-ConveyorConstants.kConveyorSpeed);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
   
@@ -74,7 +74,7 @@ public class ConveyorSubsystem extends SubsystemBase {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: read power cell sensor to see if there is a power cell currently in position
     //       (return whether there is a cell in the true/false variable "hasCell")
-    boolean hasCell = false; // intializing to false, need to add logic
+    boolean hasCell = true; // intializing to false, need to add logic
     return hasCell;
   }
 }

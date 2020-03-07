@@ -11,7 +11,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
 // TODO: import required subsystems here!
-
+import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.ConveyorSubsystem;
 // ^^-----------------------------------------------------------------------------------^^ //
 
 /**
@@ -20,15 +21,17 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class StopShoot extends CommandBase {
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: declare the shooter and conveyor subsystems here (m_shooter, m_conveyor)
-
+  private final ShooterSubsystem m_shooter;
+  private final ConveyorSubsystem m_conveyor;
   // ^^-----------------------------------------------------------------------------------^^ //
 
   public StopShoot(ShooterSubsystem shooter, ConveyorSubsystem conveyor) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: instantiate the shooter and conveyor here
-    
+    m_shooter = shooter;
+    m_conveyor = conveyor;
     // TODO: add shooter and conveyor as a requirement
-    // addRequirements(m_shooter, m_conveyor);
+    addRequirements(m_shooter, m_conveyor);
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -37,7 +40,8 @@ public class StopShoot extends CommandBase {
   public void initialize() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: stop both shooter and conveyor here
-
+    m_shooter.stop();
+    m_conveyor.stop();
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
@@ -46,7 +50,7 @@ public class StopShoot extends CommandBase {
   public boolean isFinished() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: return true
-
+    return true;
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 }

@@ -27,7 +27,6 @@ public class DriveSubsystem extends SubsystemBase {
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
   // TODO: instantiate a flag for precise mode
   private double m_DriveScale = 1;
-
   // ^^-----------------------------------------------------------------------------------^^ //
   
   public DriveSubsystem() {
@@ -50,7 +49,6 @@ public class DriveSubsystem extends SubsystemBase {
   public void tankDrive(double leftspeed, double rightspeed) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: modify to utilize precise mode scaling
-
     m_leftMotor1.set(ControlMode.PercentOutput, leftspeed/m_DriveScale);
     m_leftMotor2.set(ControlMode.PercentOutput, leftspeed/m_DriveScale);
     m_rightMotor1.set(ControlMode.PercentOutput, -rightspeed/m_DriveScale);
@@ -64,12 +62,8 @@ public class DriveSubsystem extends SubsystemBase {
   public void setPreciseMode() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     m_DriveScale = DriveConstants.kDriveLimiter;
-    
-
     // ^^-----------------------------------------------------------------------------------^^ //
   }
-
-
 
    /**
    * Set regular mode
@@ -77,8 +71,6 @@ public class DriveSubsystem extends SubsystemBase {
   public void setRegularMode() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     m_DriveScale = 1;
-    
-
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
