@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 // ^^-----------------------------------------------------------------------------------^^ //
 
-import frc.robot.Constants.HangerConstants;
+// import frc.robot.Constants.HangerConstants;
 
 public class HangerSubsystem extends SubsystemBase {
   /**
@@ -73,7 +73,7 @@ public class HangerSubsystem extends SubsystemBase {
   public boolean extended() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: return the value of the m_extended flag.
-    
+    return false;
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 }

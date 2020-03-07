@@ -60,4 +60,10 @@ public class IntakePowerCell extends CommandBase {
     }
     // ^^-----------------------------------------------------------------------------------^^ //
   }
+
+  @Override
+  public void end(boolean interrupted) {
+    m_conveyor.stop();
+    m_intake.stop();
+  }
 }

@@ -37,20 +37,20 @@ public final class Constants {
         public static final double kD = 0; 
         public static final double kIz = 0; 
         public static final double kFF = 0.000175; 
-        public static final double kMaxOutput = -3000; 
+        public static final double kMaxOutput = 4000; 
         public static final double kMaxRPM = 5700;
         public static final double kWallDistance = 0;
         // shooter speeds
-        public static final double kShootRPM = -3000;
+        public static final double kShootRPM = 4000;
         public static final double kShooterthreshold = 300;
     }
     public static final class ConveyorConstants {
         public static final int kConveyorMotorPort = 7;
-        public static final double kConveyorSpeed = 0.35;
+        public static final double kConveyorSpeed = -0.35;
     }
     public static final class IntakeConstants {
         public static final int kIntakeMotorPort = 8;
-        public static final double kIntakeSpeed = 0.55;
+        public static final double kIntakeSpeed = -0.55;
     }
     public static final class HangerConstants {
 
