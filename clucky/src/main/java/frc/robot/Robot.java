@@ -90,7 +90,7 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
      kD = 0; 
      kIz = 0; 
      kFF = 0.000175; 
-     kMaxOutput = -3000; 
+     kMaxOutput = 3000; 
      maxRPM = 5700;
      wall_distance = 0;
  
@@ -237,7 +237,7 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
     rightmotor2.set(ControlMode.PercentOutput, rightspeed);
 
     if(button_lb){
-      conveyorspeed = .70;
+      conveyorspeed = .35;
     }
 
     if(button_rb){
