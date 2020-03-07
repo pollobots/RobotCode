@@ -26,7 +26,6 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.IntakePowerCell;
 import frc.robot.commands.ShootPowerCell;
-import frc.robot.commands.StopShoot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -107,10 +106,7 @@ public class RobotContainer {
 
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: connect operator right trigger to shoot when active
-    m_operatorRightTrigger.whenActive(new ShootPowerCell(m_shooter, m_conveyor));
-
-    // TODO: connect operator right trigger to stop shooting when inactive
-    m_operatorRightTrigger.whenInactive(new StopShoot(m_shooter, m_conveyor));
+    m_operatorRightTrigger.whileActiveOnce(new ShootPowerCell(m_shooter, m_conveyor));
     // ^^-----------------------------------------------------------------------------------^^ //
     m_driverRightBumper.whenPressed(() -> m_drive.setPreciseMode());
     

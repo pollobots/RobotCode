@@ -41,16 +41,18 @@ public class ShootPowerCell extends CommandBase {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: set shooter to shoot here
     m_shooter.shoot();
+    m_conveyor.stop();
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
-  // Make this return true when this Command no longer needs to run execute()
+  // Run periodically
   @Override
-  public boolean isFinished() {
-    // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: return if shooter is ready
-    return m_shooter.ready();
-    // ^^-----------------------------------------------------------------------------------^^ //
+  public void execute() {
+    if (m_shooter.ready()) {
+      m_conveyor.moveUp();
+    } else {
+      m_conveyor.stop();
+    }
   }
 
   // Called once after isFinished returns true
@@ -58,7 +60,8 @@ public class ShootPowerCell extends CommandBase {
   public void end(boolean interrupted) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: set conveyor to feed power cells to shooter
-    m_conveyor.moveUp();
+    m_conveyor.stop();
+    m_shooter.stop();
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 }
