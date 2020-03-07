@@ -25,9 +25,8 @@ public class DriveSubsystem extends SubsystemBase {
   private final VictorSPX m_rightMotor2 = new VictorSPX(DriveConstants.kRightMotor2Port);
 
   // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-  // TODO: instantiate a flag for precise mode
+  // instantiate a speed scale for precise mode
   private double m_DriveScale = 1;
-
   // ^^-----------------------------------------------------------------------------------^^ //
   
   public DriveSubsystem() {
@@ -49,8 +48,7 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public void tankDrive(double leftspeed, double rightspeed) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: modify to utilize precise mode scaling
-
+    // Utilize precise mode scaling
     m_leftMotor1.set(ControlMode.PercentOutput, leftspeed/m_DriveScale);
     m_leftMotor2.set(ControlMode.PercentOutput, leftspeed/m_DriveScale);
     m_rightMotor1.set(ControlMode.PercentOutput, -rightspeed/m_DriveScale);
@@ -64,12 +62,8 @@ public class DriveSubsystem extends SubsystemBase {
   public void setPreciseMode() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     m_DriveScale = DriveConstants.kDriveLimiter;
-    
-
     // ^^-----------------------------------------------------------------------------------^^ //
   }
-
-
 
    /**
    * Set regular mode
@@ -77,9 +71,6 @@ public class DriveSubsystem extends SubsystemBase {
   public void setRegularMode() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     m_DriveScale = 1;
-    
-
     // ^^-----------------------------------------------------------------------------------^^ //
   }
-
 }

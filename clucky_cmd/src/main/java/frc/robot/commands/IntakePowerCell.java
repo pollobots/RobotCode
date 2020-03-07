@@ -25,9 +25,9 @@ public class IntakePowerCell extends CommandBase {
 
   public IntakePowerCell(IntakeSubsystem intake, ConveyorSubsystem conveyor) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: instantiate the intake and conveyor here
+    // TODO: instantiate the intake and conveyor here (m_intake, m_conveyor)
     
-    // TODO: add intake and conveyor as a requirement
+    // TODO: add intake and conveyor as a requirement (uncomment line below)
     // addRequirements(m_intake, m_conveyor);
     // ^^-----------------------------------------------------------------------------------^^ //
   }

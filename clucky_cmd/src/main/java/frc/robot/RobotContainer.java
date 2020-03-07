@@ -13,14 +13,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.util.JoystickAxisButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 // TODO: import subsystems here
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.commands.IntakePowerCell;
-import frc.robot.commands.ShootPowerCell;
+
 // TODO: import commands here
 // import frc.robot.commands.Autonomous;
 import frc.robot.commands.TankDrive;
+import frc.robot.commands.IntakePowerCell;
+import frc.robot.commands.ShootPowerCell;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -28,7 +30,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.JoystickConstants;
 
 // ^^-----------------------------------------------------------------------------------^^ //
-
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -45,11 +46,11 @@ public class RobotContainer {
   //  - m_shooter
   //  - m_conveyor
   //  - m_intake
-  //  - m_hanger
+  //  - m_hanger (when we're finished!)
 
   // ^^-----------------------------------------------------------------------------------^^ //
 
-  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  // private final Autonomous m_autoCommand = new Autonomous(m_shooter, m_conveyor, m_intake, m_hanger);
   private final CommandBase m_autonomousCommand = null;
 
   // The driver's controller
@@ -80,20 +81,20 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    // operator right trigger for intake
+    // operator left trigger for intake
     final JoystickAxisButton m_operatorLeftTriggerAxisButton = new JoystickAxisButton(m_operatorController, JoystickConstants.kOperatorLeftTrigger, JoystickConstants.kTriggerThreshold);
     final Trigger m_operatorLeftTrigger = new Trigger(m_operatorLeftTriggerAxisButton::get);
 
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: Create JoystickAxisButton and Trigger objects for useful operator triggers
-
-    // TODO: Create JoystickAxisButton and Trigger objects for useful driver triggers
+    // TODO: Create JoystickAxisButton and Trigger objects for operator right trigger for shooting
 
     // TODO: Create JoystickButton objects for useful operator buttons
 
-    // TODO: Create JoystickButton objects for useful driver buttons
+    // TODO: Create JoystickButton objects for driver trigger for precise mode
 
     // ^^-----------------------------------------------------------------------------------^^ //
+
+
 
     // connect operator left trigger to intake power cell command
     m_operatorLeftTrigger.whileActiveOnce(new IntakePowerCell(m_intake, m_conveyor));
@@ -103,9 +104,10 @@ public class RobotContainer {
 
     // ^^-----------------------------------------------------------------------------------^^ //
 
-    m_driverRightTrigger.whenActive(() -> m_drive.setPreciseMode);
-
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+    // TODO: connect driver right trigger to go to precise mode when active (uncomment line below)
+    // m_driverRightTrigger.whenActive(() -> m_drive.setPreciseMode());
+
     // TODO: connect driver right trigger to go back to regular drive mode when inactive
 
     // ^^-----------------------------------------------------------------------------------^^ //

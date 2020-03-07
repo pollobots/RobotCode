@@ -74,7 +74,7 @@ public class ConveyorSubsystem extends SubsystemBase {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
     // TODO: read power cell sensor to see if there is a power cell currently in position
     //       (return whether there is a cell in the true/false variable "hasCell")
-    boolean hasCell = false; // intializing to false, need to add logic
+    boolean hasCell = true; // intializing to true, need to add logic
     return hasCell;
   }
 }

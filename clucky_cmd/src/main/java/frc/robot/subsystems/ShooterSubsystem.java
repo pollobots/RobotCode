@@ -58,6 +58,7 @@ public class ShooterSubsystem extends SubsystemBase {
     m_pidController.setReference(0, ControlType.kVelocity);
   
   }
+  
   /**
    * Reterns whether the shooter has reached desired speed (boolean)
    */

@@ -25,9 +25,9 @@ public class ShootPowerCell extends CommandBase {
 
   public ShootPowerCell(ShooterSubsystem shooter, ConveyorSubsystem conveyor) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: instantiate the shooter and conveyor here
+    // TODO: instantiate the shooter and conveyor here (m_shooter, m_conveyor)
     
-    // TODO: add shooter and conveyor as a requirement
+    // TODO: add shooter and conveyor as a requirement (uncomment line below)
     // addRequirements(m_shooter, m_conveyor);
     // ^^-----------------------------------------------------------------------------------^^ //
   }

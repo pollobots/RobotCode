@@ -75,5 +75,6 @@ public class HangerSubsystem extends SubsystemBase {
     // TODO: return the value of the m_extended flag.
     
     // ^^-----------------------------------------------------------------------------------^^ //
+    return false;
   }
 }
