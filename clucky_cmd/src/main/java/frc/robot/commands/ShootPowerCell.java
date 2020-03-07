@@ -36,16 +36,16 @@ public class ShootPowerCell extends CommandBase {
   @Override
   public void initialize() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: set shooter to shoot here
+    // TODO: set shooter to shoot and conveyor to stop here
 
     // ^^-----------------------------------------------------------------------------------^^ //
   }
 
-  // Make this return true when this Command no longer needs to run execute()
+  // Run periodically
   @Override
-  public boolean isFinished() {
+  public void execute() {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: return if shooter is ready
+    // TODO: check if shooter is ready and move conveyor up if so
 
     // ^^-----------------------------------------------------------------------------------^^ //
   }
@@ -54,7 +54,7 @@ public class ShootPowerCell extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
-    // TODO: set conveyor to feed power cells to shooter
+    // TODO: stop conveyor and shooter here
 
     // ^^-----------------------------------------------------------------------------------^^ //
   }
