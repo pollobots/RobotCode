@@ -51,4 +51,13 @@ public class IntakePowerCell extends CommandBase {
 
     // ^^-----------------------------------------------------------------------------------^^ //
   }
+
+  // Called once after isFinished returns true
+  @Override
+  public void end(boolean interrupted) {
+    // WRITE CODE BETWEEN THESE LINES -------------------------------------------------------- //
+    // TODO: set intake and conveyor to stop
+
+    // ^^-----------------------------------------------------------------------------------^^ //
+  }
 }
