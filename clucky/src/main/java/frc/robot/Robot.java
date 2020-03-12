@@ -63,7 +63,7 @@ private CANPIDController m_pidController;
 private CANEncoder m_encoder, m2_encoder;
 public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM, wall_distance;
 
-VictorSP upperconveyormotor = new VictorSP(5);
+VictorSPX hangermotor = new VictorSPX(6);
 Spark conveyor1 = new Spark(7);
 Spark intakemotor = new Spark(8);
 
@@ -129,7 +129,8 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
 
     intakemotor.set(0);
     conveyor1.set(0);
-    upperconveyormotor.set(0);
+    hangermotor.configFactoryDefault();
+    hangermotor.set(ControlMode.PercentOutput, 0);
   }
 
   @Override
@@ -192,7 +193,8 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
 
     intakemotor.set(0);
     conveyor1.set(0);
-    upperconveyormotor.set(0);
+    hangermotor.configFactoryDefault();
+    hangermotor.set(ControlMode.PercentOutput, 0);
   }
  
   @Override
@@ -211,7 +213,7 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
     double righttrigger = controller2.getRawAxis(3);
     boolean righttriggerpulled = righttrigger > 0.5;
 
-    double upperconveyorspeed = 0;
+    double hangerspeed = 0;
     double lefttrigger =controller2.getRawAxis(2);
     boolean lefttriggerpulled = lefttrigger > 0.5;
 
@@ -262,19 +264,19 @@ private final AnalogInput ultrasonic = new AnalogInput(0);
 
 
     if(lefttriggerpulled){
-      upperconveyorspeed = -.50;
+      hangerspeed = 1;
     }
 
     // set the direction for the motors
     intakespeed = intakespeed*intakedirection;
     conveyorspeed = conveyorspeed*intakedirection;
-    upperconveyorspeed=upperconveyorspeed*intakedirection;
+    hangerspeed = hangerspeed*intakedirection;
 
     intakemotor.set(intakespeed);
     conveyor1.set(conveyorspeed);
     // shootermotor.set(shooterspeed);
     m_pidController.setReference(shooterspeed, ControlType.kVelocity);
-    upperconveyormotor.set(upperconveyorspeed);
+    hangermotor.set(ControlMode.PercentOutput, hangerspeed);
 
 
     double distance = ultrasonic.getValue();
