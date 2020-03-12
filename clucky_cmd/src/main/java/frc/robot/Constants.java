@@ -42,10 +42,14 @@ public final class Constants {
         public static final double kShooterthreshold = 300;
     }
     public static final class ConveyorConstants {
-
+        public static final int kConveyorMotorPort = 7;
+        public static final double kConveyorUpSpeed = .3;
+        public static final double kConveyorDownSpeed = -.3;
     }
     public static final class IntakeConstants {
-
+        public static final int kIntakeMotorPort = 8;
+        public static final double kIntakeInSpeed = .7;
+        public static final double kIntakeOutSpeed = -.7;
     }
     public static final class HangerConstants {
 
